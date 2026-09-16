@@ -1,0 +1,19 @@
+﻿@using WebApiClient.Models
+@model Post
+@{
+}
+<h3>/Posts/Detail</h3>
+@if (Model == null)
+{
+    <p>Không tìm thấy bài viết.</p>
+}
+else
+{
+    <table>
+        <tr><th>UserId</th><td>@Model.UserId</td></tr>
+        <tr><th>Id</th><td>@Model.Id</td></tr>
+        <tr><th>Title</th><td>@Model.Title</td></tr>
+        <tr><th>Body</th><td>@Model.Body</td></tr>
+    </table>
+}
+<a href="/Posts/List">Quay lại danh sách</a>
