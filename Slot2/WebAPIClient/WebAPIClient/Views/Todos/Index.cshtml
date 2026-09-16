@@ -1,0 +1,27 @@
+@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@model List<Todo>
+@{
+}
+
+<h2>Todo List</h2>
+<table>
+    <tr>
+        <th>UserId</th>
+        <th>Id</th>
+        <th>Title</th>
+        <th>Completed</th>
+    </tr>
+    @{
+        foreach (var todo in Model)
+        {
+            <tr>
+                <td>@todo.UserId</td>
+                <td>@todo.Id</td>
+                <td>@todo.Title</td>
+                <td>@todo.Completed</td>
+            </tr>
+        }
+    }
+</table>

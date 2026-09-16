@@ -1,0 +1,27 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+@model List<Photo>
+
+<h2>Photo List</h2>
+<table>
+    <tr>
+        <th>Album Id</th>
+        <th>Id</th>
+        <th>Title</th>
+        <th>Image</th>
+    </tr>
+    @{
+        foreach (var photo in Model)
+        {
+            <tr>
+                <td>@photo.AlbumId</td>
+                <td>@photo.Id</td>
+                <td>@photo.Title</td>
+                <td><img src="@photo.Url" alt="@photo.Title" width="100" /></td>
+            </tr>
+        }
+    }
+</table>

@@ -1,0 +1,30 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+@using WebAPIClient.Models
+@model Post
+
+<form method="post" action="Create">
+    <div>
+        <label>Select User:</label>
+        <select name="UserId">
+            @{foreach (var user in ViewBag.Users)
+            {
+                <option value="@user.Id">@user.Name (@user.Email)</option>
+            }}
+        </select>
+    </div>
+    <div>
+        <label>Title</label>
+        <input type="text" name="Title" />
+    </div>
+    <div>
+        <label>Body</label>
+        <input type="text" name="Body" />
+    </div>
+    <div>
+        <input type="submit" value="Create" />
+    </div>
+</form>

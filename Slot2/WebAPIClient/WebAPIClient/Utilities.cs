@@ -1,4 +1,4 @@
-﻿namespace WebApiClient.Utilities
+﻿namespace WebAPIClient
 {
     public class Utilities
     {

@@ -1,0 +1,32 @@
+@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+
+@model Post
+
+<h2>Title: @Model.Title</h2>
+<p>User Id: @Model.UserId</p>
+<p>Content: @Model.Body</p>
+
+<div>------------------------------</div>
+
+<h2>Comments</h2>
+<table>
+    <tr>
+        <th>Name</th>
+        <th>Email</th>
+        <th>Comment</th>
+    </tr>
+    @{
+        foreach (var comment in ViewBag.Comments)
+        {
+            <tr>
+                <td>@comment.Name</td>
+                <td>@comment.Email</td>
+                <td>@comment.Body</td>
+            </tr>
+        }
+    }
+</table>
