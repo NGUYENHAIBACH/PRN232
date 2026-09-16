@@ -1,0 +1,24 @@
+@using WebApiClient.Models
+@model Post
+<form method="post" action="Create">
+    <div>
+        <label>UserId:</label>
+        <select name="UserId">
+            @foreach (var u in ViewBag.Users)
+            {
+                <option value="@u.Id">@u.Name (@u.Email)</option>
+            }
+        </select>
+    </div>
+    <div>
+        <label>Title:</label>
+        <input type="text" name="Title" />
+    </div>
+    <div>
+        <label>Body:</label>
+        <input type="text" name="Body" />
+    </div>
+    <div>
+        <input type="submit" value="Create" />
+    </div>
+</form>

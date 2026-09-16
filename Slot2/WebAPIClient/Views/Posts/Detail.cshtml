@@ -1,0 +1,20 @@
+@using WebApiClient.Models
+@model Post
+@{
+}
+<h3>/Posts/Detail/@Model.Id</h3>
+<div>
+    <div>Id: @Model.Id</div>
+    <div>UserId: @Model.UserId</div>
+    <div>Title: @Model.Title</div>
+    <div>Body: @Model.Body</div>
+</div>
+
+<h4>List of comments:</h4>
+@foreach (var c in ViewBag.Comments)
+{
+    <div>
+        <h6>@c.Name - @c.Email</h6>
+        <div>@c.Body</div>
+    </div>
+}

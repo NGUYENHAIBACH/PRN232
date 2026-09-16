@@ -1,0 +1,25 @@
+@using WebApiClient.Models
+@model List<Post>
+<h3>/Posts/List</h3>
+<a href="/Posts/Create">Create a new Post</a>
+<table>
+    <tr>
+        <th>UserId</th>
+        <th>Id</th>
+        <th>Title</th>
+        <th>Action</th>
+    </tr>
+    @foreach(var post in Model)
+    {
+        <tr>
+            <td>@post.UserId</td>
+            <td>@post.Id</td>
+            <td>@post.Title</td>
+            <td>
+                <a href="/Posts/Detail/@post.Id">Detail</a>
+                <a href="/Posts/Update/@post.Id">Update</a>
+                <a href="/Posts/Delete/@post.Id">Delete</a>
+            </td>
+        </tr>
+    }
+</table>

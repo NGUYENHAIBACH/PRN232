@@ -1,0 +1,33 @@
+@using WebApiClient.Models
+@model Post
+<h3>/Posts/Update/@Model.Id</h3>
+<form method="post" action="/Posts/Update">
+    <input type="hidden" name="Id" value="@Model.Id" />
+    <div>
+        <label>UserId:</label>
+        <select name="UserId">
+            @foreach (var u in ViewBag.Users)
+            {
+                if (u.Id == Model.UserId)
+                {
+                    <option value="@u.Id" selected>@u.Name (@u.Email)</option>
+                }
+                else
+                {
+                    <option value="@u.Id">@u.Name (@u.Email)</option>
+                }
+            }
+        </select>
+    </div>
+    <div>
+        <label>Title:</label>
+        <input type="text" name="Title" value="@Model.Title" />
+    </div>
+    <div>
+        <label>Body:</label>
+        <input type="text" name="Body" value="@Model.Body" />
+    </div>
+    <div>
+        <input type="submit" value="Update" />
+    </div>
+</form>

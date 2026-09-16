@@ -1,0 +1,62 @@
+﻿@using Q2.Models
+@model List<Ticket>
+@{
+    var movies = (List<Movie>)ViewBag.Movies;
+    int selectedMovieId = ViewBag.MovieId;
+    string selectedAgeGroup = ViewBag.AgeGroup;
+}
+<div class="cinema-wrap">
+    <h2 style="margin-top: 0; margin-bottom: 20px;">Cinema Ticket Booking Management</h2>
+
+    <!-- Form tìm kiếm nâng cao -->
+    <form method="get" action="/Ticket" class="filter-section">
+        <div class="filter-item">
+            <label>Filter by Movie:</label>
+            <select name="movieId" id="sl_movies">
+                <option value="0" id="op_0">All movies</option>
+                @foreach (var m in movies)
+                {
+                    <option value="@m.MovieID" id="op_@m.MovieID" selected="@(m.MovieID == selectedMovieId)">@m.Title</option>
+                }
+            </select>
+        </div>
+
+        <div class="filter-item">
+            <label>Viewer Age Group:</label>
+            <select name="ageGroup" id="sl_ageGroup">
+                <option value="All viewers" selected="@(selectedAgeGroup == "All viewers")">All viewers</option>
+                <option value="Minor ( &lt; 18 )" selected="@(selectedAgeGroup == "Minor ( < 18 )")">Minor ( &lt; 18 )</option>
+                <option value="Adult ( &gt;= 18 )" selected="@(selectedAgeGroup == "Adult ( >= 18 )")">Adult ( &gt;= 18 )</option>
+            </select>
+        </div>
+
+        <button type="submit" id="bt_search" class="btn-submit">Search</button>
+    </form>
+
+    <!-- Hiển thị danh sách vé dựa trên các tiêu chí lọc -->
+    <table class="ticket-table">
+        <thead>
+            <tr>
+                <th style="width: 120px;">Ticket ID</th>
+                <th style="width: 250px;">Viewer Name</th>
+                <th style="width: 230px;">Booking Date</th>
+                <th style="width: 130px;">Viewer Age</th>
+                <th style="width: 120px;">Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var t in Model)
+            {
+                <tr>
+                    <td id="td_id_@t.TicketID">@t.TicketID</td>
+                    <td id="td_viewer_@t.TicketID">@t.ViewerName</td>
+                    <td id="td_bookingDate_@t.TicketID">@t.BookingDate.ToString("yyyy-MM-dd HH:mm")</td>
+                    <td id="td_age_@t.TicketID">@t.ViewerAge</td>
+                    <td>
+                        <a href="/Ticket/@t.TicketID" id="a_@t.TicketID" class="btn-action">View Details</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
